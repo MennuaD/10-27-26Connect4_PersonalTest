@@ -1,0 +1,65 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#connect4 {
+    background-color: darkslategray;
+    border: dashed 1px pink;
+    width: 6.1in;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+div#body {
+    width: 6.2in;
+    margin-left: 1in;
+    padding-bottom: .5in;
+}
+
+.c4,
+.c4-header {
+    border: solid 1px black;
+    margin: 1px;
+    height: .75in;
+    width: .75in;
+    display: inline-block;
+    font-size: 40pt;
+    text-align: center;
+    border-radius: 25%;
+    background-color: white;
+}
+
+.c4-header {
+    margin-top: .25in;
+    height: .25in;
+    background-color: black;
+    border-radius: 0%;
+    margin-bottom: .20in;
+    font-size: 10pt;
+    color: white;
+    padding-top: 10px;
+}
+
+.winner {
+    background-color: green !important;
+    color: green !important;
+}
+
+.x {
+    background-color: blue;
+    color: blue;
+}
+
+.o {
+    background-color: crimson;
+    color: crimson;
+}
+
+sub {
+    color: crimson;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
+}
