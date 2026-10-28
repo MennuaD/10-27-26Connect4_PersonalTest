@@ -16,13 +16,11 @@ function nextMove($e) {
     console.log(lastInd);
     console.log(slot);
     if(isX){
-        play();
         slot.innerText = "X";
-        slot.classList.add("x");
+        timedLoop(100, columnSelected, lastInd, isX);
     }else{
-        play();
         slot.innerText = "O";
-        slot.classList.add("o");
+        timedLoop(100, columnSelected, lastInd, isX);
     }
     isX = !isX;
     
@@ -39,28 +37,11 @@ c4s.forEach((e, i, a) => {
     e.dataset.index = i;
 })
 
-function play(delay, column, lastindex, slot, ) {
-    let sub = `.c4[data-column="${column}"]`;
-    const c4col = [...document.querySelectorAll(sub)];
-
-    let counter = 0; // Tracks the current iteration
-
-    // Start the interval and save its unique ID
-    const intervalId = setInterval(() => {
-
-        // 1. Run your loop logic here
-        
-
-        counter++; // Increment the counter
-
-        // 2. Check the exit condition
-        if (counter >= lastindex) {
-            clearInterval(intervalId); // Stop the loop
-            console.log("Loop finished!");
-        }
-
-    }, delay);
+function sayHi(){
+    console.log("hi");
 }
+
+
 
 const button = document.querySelector("button");
 
@@ -79,7 +60,8 @@ const len = c4one.length;
 
 
 
-function timedLoop(delay, column, lastindex) {
+function timedLoop(delay, column, lastindex, Xis) {
+    console.log(lastindex);
     let sub = `.c4[data-column="${column}"]`;
     const c4col = [...document.querySelectorAll(sub)];
 
@@ -90,18 +72,32 @@ function timedLoop(delay, column, lastindex) {
 
         // 1. Run your loop logic here
         console.log(`Iteration number: ${counter}`);
-        if (counter == 0) {
-            //c4s.innerHTML = "<div style='color = alice-blue'>" + c4s.innerText + "</div>";
-            c4col[counter].style.color = "crimson";
+
+        if(Xis){
+            if (counter == 0) {
+            c4col[counter].classList.add("x");
         } else {
-            c4col[counter - 1].style.color = "black";
-            c4col[counter].style.color = "crimson";
+            c4col[counter - 1].classList.remove("x");
+            c4col[counter - 1].classList.remove("o");
+            c4col[counter].classList.add("x");
         }
 
+        }else{
+            if (counter == 0) {
+            //c4s.innerHTML = "<div style='color = alice-blue'>" + c4s.innerText + "</div>";
+            c4col[counter].classList.add("o");
+        } else {
+            c4col[counter - 1].classList.remove("o");
+            c4col[counter - 1].classList.remove("x");
+            c4col[counter].classList.add("o");
+        }
+
+        }
+        
         counter++; // Increment the counter
 
         // 2. Check the exit condition
-        if (counter >= lastindex) {
+        if (counter >= lastindex +1) {
             clearInterval(intervalId); // Stop the loop
             console.log("Loop finished!");
         }
@@ -131,5 +127,52 @@ onload = (event) => {
         setTimeout(2000);
       }
     }
+}
+
+
+function play(delay, column, lastindex, slot, text) {
+    let sub = `.c4[data-column="${column}"]`;
+    const c4col = [...document.querySelectorAll(sub)];
+
+    let counter = 0; // Tracks the current iteration
+
+    // Start the interval and save its unique ID
+    const intervalId = setInterval(() => {
+
+        // 1. Run your loop logic here
+        
+
+        counter++; // Increment the counter
+
+        // 2. Check the exit condition
+        if (counter >= lastindex) {
+            clearInterval(intervalId); // Stop the loop
+            console.log("Loop finished!");
+        }
+
+    }, delay);
+}
+
+function play(delay){
+    let sub = `.c4[data-column="0"]`;
+    const c4col = [...document.querySelectorAll(sub)];
+
+    let counter = 0; // Tracks the current iteration
+
+    // Start the interval and save its unique ID
+    const intervalId = setInterval(() => {
+
+        // 1. Run your loop logic here
+        console.log("HI");
+
+        counter++; // Increment the counter
+
+        // 2. Check the exit condition
+        if (counter >= 5) {
+            clearInterval(intervalId); // Stop the loop
+            console.log("Loop finished!");
+        }
+
+    }, delay);
 }
     */
